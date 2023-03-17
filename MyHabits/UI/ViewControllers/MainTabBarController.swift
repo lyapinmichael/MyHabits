@@ -33,6 +33,7 @@ final class MainTabBarController: UITabBarController {
         
         tabBar.standardAppearance = tabBarAppearance
         tabBar.scrollEdgeAppearance = tabBarAppearance
+        tabBar.tintColor = UIColor(named: "Purple")
     }
     
     private func setupNavigationController(root: UIViewController, title: String, tabBarItem: String, largeTiles: Bool = false) -> UINavigationController {

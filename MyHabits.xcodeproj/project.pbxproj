@@ -15,6 +15,8 @@
 		EC9797C329C45C0A00FEEA71 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9797C229C45C0A00FEEA71 /* MainTabBarController.swift */; };
 		EC9797C529C467CD00FEEA71 /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9797C429C467CD00FEEA71 /* HabitsViewController.swift */; };
 		EC9797C729C4681F00FEEA71 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9797C629C4681F00FEEA71 /* InfoViewController.swift */; };
+		EC9797C929C4738C00FEEA71 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9797C829C4738C00FEEA71 /* Constants.swift */; };
+		EC9797CB29C476E500FEEA71 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9797CA29C476E500FEEA71 /* Info.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		EC9797C229C45C0A00FEEA71 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		EC9797C429C467CD00FEEA71 /* HabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewController.swift; sourceTree = "<group>"; };
 		EC9797C629C4681F00FEEA71 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		EC9797C829C4738C00FEEA71 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EC9797CA29C476E500FEEA71 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				EC9797C029C45BBE00FEEA71 /* HabitsStore.swift */,
+				EC9797CA29C476E500FEEA71 /* Info.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 			children = (
 				EC9797BC29C3932C00FEEA71 /* ViewControllers */,
 				EC9797BD29C3933F00FEEA71 /* Views */,
+				EC9797C829C4738C00FEEA71 /* Constants.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -184,9 +190,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC9797C129C45BBE00FEEA71 /* HabitsStore.swift in Sources */,
+				EC9797CB29C476E500FEEA71 /* Info.swift in Sources */,
 				EC9797A829C391A600FEEA71 /* AppDelegate.swift in Sources */,
 				EC9797C529C467CD00FEEA71 /* HabitsViewController.swift in Sources */,
 				EC9797C329C45C0A00FEEA71 /* MainTabBarController.swift in Sources */,
+				EC9797C929C4738C00FEEA71 /* Constants.swift in Sources */,
 				EC9797C729C4681F00FEEA71 /* InfoViewController.swift in Sources */,
 				EC9797AA29C391A600FEEA71 /* SceneDelegate.swift in Sources */,
 			);
