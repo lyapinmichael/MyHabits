@@ -29,7 +29,7 @@ final class MainTabBarController: UITabBarController {
 
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithOpaqueBackground()
-        tabBarAppearance.backgroundColor = UIColor(named: "White")
+        tabBarAppearance.backgroundColor = UIColor(named: "PickedTabBarWhite")
         
         tabBar.standardAppearance = tabBarAppearance
         tabBar.scrollEdgeAppearance = tabBarAppearance
@@ -44,7 +44,7 @@ final class MainTabBarController: UITabBarController {
         
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
-        navBarAppearance.backgroundColor = UIColor(named: "White")
+        navBarAppearance.backgroundColor = UIColor(named: "PickedNavBarWhite")
         
         navigationController.tabBarItem = tabBarItem
         navigationController.navigationBar.prefersLargeTitles = largeTiles

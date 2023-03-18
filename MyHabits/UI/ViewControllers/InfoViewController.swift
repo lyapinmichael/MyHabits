@@ -20,10 +20,10 @@ final class InfoViewController: UIViewController {
     }()
     
     private lazy var contentView: UIView = {
-        let stackView = UIView()
+        let contentView = UIView()
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        return contentView
     }()
     
     private lazy var infoTitle: UILabel = {

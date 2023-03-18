@@ -35,6 +35,7 @@ final class HabitsViewController: UIViewController {
     
     private func setup() {
         title = "Сегодня"
+        view.backgroundColor = UIColor(named: "PickedBackgroundWhite")
         navigationItem.rightBarButtonItem = plusBarButtonItem
     }
     
@@ -42,6 +43,9 @@ final class HabitsViewController: UIViewController {
     
     @objc private func pushToAddHabitView() {
         print("should push to next view controller")
+        let habitViewController = HabitViewController()
+        habitViewController.modalPresentationStyle = .fullScreen
+        present(habitViewController, animated: true)
     }
 
 }
