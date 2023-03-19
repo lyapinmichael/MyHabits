@@ -16,7 +16,7 @@ final class HabitsViewController: UIViewController {
             image: UIImage(systemName: "plus"),
             style: .plain,
             target: self,
-            action: #selector(pushToAddHabitView)
+            action: #selector(presentHabitView)
         )
         
         plus.tintColor = UIColor(named: "Purple")
@@ -41,11 +41,19 @@ final class HabitsViewController: UIViewController {
     
     // MARK: - @Objc actions
     
-    @objc private func pushToAddHabitView() {
+    @objc private func presentHabitView() {
         print("should push to next view controller")
         let habitViewController = HabitViewController()
-        habitViewController.modalPresentationStyle = .fullScreen
-        present(habitViewController, animated: true)
+        
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.backgroundColor = UIColor(named: "PickedNavBarWhite")
+        
+        let habitNavigationController = UINavigationController(rootViewController: habitViewController)
+        habitNavigationController.navigationBar.standardAppearance = navBarAppearance
+        habitNavigationController.navigationBar.scrollEdgeAppearance = navBarAppearance
+        habitNavigationController.modalPresentationStyle = .overFullScreen
+        present(habitNavigationController, animated: true)
     }
 
 }
