@@ -13,6 +13,8 @@ final class HabitCollectionViewCell: UICollectionViewCell {
     
     static let id = "habitCell"
     
+    var delegate: HabitsViewController?
+    
     // MARK: - Private Properties
     
     private var state: Bool? {
@@ -41,6 +43,7 @@ final class HabitCollectionViewCell: UICollectionViewCell {
     private lazy var habitLabel: UILabel = {
         let label = UILabel()
         label.font = Fonts.headline
+        label.numberOfLines = 2
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -107,6 +110,7 @@ final class HabitCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             habitLabel.topAnchor.constraint(equalTo: habitCellView.topAnchor, constant: 16),
             habitLabel.leadingAnchor.constraint(equalTo: habitCellView.leadingAnchor, constant: 20),
+            habitLabel.trailingAnchor.constraint(equalTo: circle.leadingAnchor, constant: -8),
             
             timeLabel.topAnchor.constraint(equalTo: habitLabel.bottomAnchor, constant: 10),
             timeLabel.leadingAnchor.constraint(equalTo: habitCellView.leadingAnchor, constant: 20),
@@ -137,6 +141,7 @@ final class HabitCollectionViewCell: UICollectionViewCell {
     func update(with habit: Habit) {
         state = habit.isAlreadyTakenToday
         countLabel.text = "Счетчик: " + "\(habit.trackDates.count)"
+        delegate?.updateProgress()
     }
     
     // MARK: - Objc actions

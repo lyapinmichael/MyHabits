@@ -64,7 +64,7 @@ final class ProgressCollectionViewCell: UICollectionViewCell {
     
         setup()
         setConstraints()
-        updateProgress(HabitsStore.shared.todayProgress)
+        progressBar.progress = (HabitsStore.shared.todayProgress)
     }
     
     required init?(coder: NSCoder) {
@@ -98,7 +98,7 @@ final class ProgressCollectionViewCell: UICollectionViewCell {
     // MARK: - Public methods
     
     func updateProgress(_ newValue: Float) {
-        progressBar.progress = newValue
+        progressBar.setProgress(newValue, animated: true)
         progressLabel.text = String(format: "%.0f", newValue*100) + "%"
     }
     

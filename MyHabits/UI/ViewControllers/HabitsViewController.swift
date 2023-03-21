@@ -77,6 +77,12 @@ final class HabitsViewController: UIViewController {
         collectionView.reloadData()
     }
     
+    func updateProgress() {
+        guard let progressCell = collectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as? ProgressCollectionViewCell else { return }
+        
+        progressCell.updateProgress(HabitsStore.shared.todayProgress)
+    }
+    
     // MARK: - @Objc actions
     
     @objc private func presentHabitView() {
@@ -127,6 +133,7 @@ extension HabitsViewController: UICollectionViewDataSource {
                 withReuseIdentifier: HabitCollectionViewCell.id,
                 for: indexPath) as! HabitCollectionViewCell
             cell.setup(with: HabitsStore.shared.habits[indexPath.row])
+            cell.delegate = self
             return cell
         }
     }
