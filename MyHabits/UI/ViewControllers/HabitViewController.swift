@@ -89,6 +89,8 @@ class HabitViewController: UIViewController {
     
     @objc private func save() {
         
+        habitView.endEditing(true)
+        
         guard habitView.title != nil else {
             
             let alertTitle = "Ой!"

@@ -60,7 +60,6 @@ final class HabitCollectionViewCell: UICollectionViewCell {
         
         label.font = Fonts.footnoteRG
         label.textColor = .systemGray
-        label.text = "Счетчик: "
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -137,7 +136,7 @@ final class HabitCollectionViewCell: UICollectionViewCell {
     
     func update(with habit: Habit) {
         state = habit.isAlreadyTakenToday
-        countLabel.text? += "\(habit.trackDates.count)"
+        countLabel.text = "Счетчик: " + "\(habit.trackDates.count)"
     }
     
     // MARK: - Objc actions
@@ -149,7 +148,10 @@ final class HabitCollectionViewCell: UICollectionViewCell {
         let index = superView.indexPath(for: self)!.row
         let habit = HabitsStore.shared.habits[index]
         
-        guard state == false else { return }
+        guard state == false else {
+            habit.trackDates.removeLast()
+            update(with: habit)
+            return }
         
         HabitsStore.shared.track(habit)
         update(with: habit)
