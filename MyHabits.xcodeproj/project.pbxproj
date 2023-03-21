@@ -19,6 +19,8 @@
 		EC9797CB29C476E500FEEA71 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9797CA29C476E500FEEA71 /* Info.swift */; };
 		EC9797CD29C4B7E300FEEA71 /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9797CC29C4B7E300FEEA71 /* HabitViewController.swift */; };
 		ECA7CF6729C7461900730EF8 /* HabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA7CF6629C7461900730EF8 /* HabitView.swift */; };
+		ECA7CF6A29C7A3D900730EF8 /* HabitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA7CF6929C7A3D900730EF8 /* HabitCollectionViewCell.swift */; };
+		ECA7CF6C29C7A3EE00730EF8 /* ProgressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA7CF6B29C7A3EE00730EF8 /* ProgressCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		EC9797CA29C476E500FEEA71 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		EC9797CC29C4B7E300FEEA71 /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
 		ECA7CF6629C7461900730EF8 /* HabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitView.swift; sourceTree = "<group>"; };
+		ECA7CF6929C7A3D900730EF8 /* HabitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCollectionViewCell.swift; sourceTree = "<group>"; };
+		ECA7CF6B29C7A3EE00730EF8 /* ProgressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 		EC9797BD29C3933F00FEEA71 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ECA7CF6829C7A3AD00730EF8 /* HabitCollectionViewCells */,
 				ECA7CF6629C7461900730EF8 /* HabitView.swift */,
 			);
 			path = Views;
@@ -123,6 +128,15 @@
 				EC9797C829C4738C00FEEA71 /* Constants.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		ECA7CF6829C7A3AD00730EF8 /* HabitCollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				ECA7CF6929C7A3D900730EF8 /* HabitCollectionViewCell.swift */,
+				ECA7CF6B29C7A3EE00730EF8 /* ProgressCollectionViewCell.swift */,
+			);
+			path = HabitCollectionViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,8 +211,10 @@
 			files = (
 				EC9797C129C45BBE00FEEA71 /* HabitsStore.swift in Sources */,
 				EC9797CB29C476E500FEEA71 /* Info.swift in Sources */,
+				ECA7CF6C29C7A3EE00730EF8 /* ProgressCollectionViewCell.swift in Sources */,
 				EC9797A829C391A600FEEA71 /* AppDelegate.swift in Sources */,
 				EC9797C529C467CD00FEEA71 /* HabitsViewController.swift in Sources */,
+				ECA7CF6A29C7A3D900730EF8 /* HabitCollectionViewCell.swift in Sources */,
 				EC9797C329C45C0A00FEEA71 /* MainTabBarController.swift in Sources */,
 				EC9797C929C4738C00FEEA71 /* Constants.swift in Sources */,
 				EC9797C729C4681F00FEEA71 /* InfoViewController.swift in Sources */,

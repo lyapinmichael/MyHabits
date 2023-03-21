@@ -9,6 +9,10 @@ import UIKit
 
 class HabitViewController: UIViewController {
     
+    // MARK: - Public properties
+    
+    var delegate: HabitsViewController?
+    
     // MARK: - Private properties
     
     private lazy var habitView: HabitView = {
@@ -102,11 +106,14 @@ class HabitViewController: UIViewController {
             return
         }
         
-        var habit = Habit(name: habitView.title!,
+        let habit = Habit(name: habitView.title!,
                           date: habitView.date!,
                           color: habitView.color!)
         let habitsStore = HabitsStore.shared
         habitsStore.habits.append(habit)
+        
+        delegate?.update()
+        
         dismiss(animated: true)
     }
 

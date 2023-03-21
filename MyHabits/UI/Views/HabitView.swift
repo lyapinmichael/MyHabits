@@ -22,7 +22,7 @@ class HabitView: UIView {
     private lazy var titleLabel: UILabel = {
         let title = UILabel()
         title.text = "НАЗВАНИЕ"
-        title.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        title.font = Fonts.footnoteSB
         
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
@@ -42,7 +42,7 @@ class HabitView: UIView {
     private lazy var colorLabel: UILabel = {
         let color = UILabel()
         color.text = "ЦВЕТ"
-        color.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        color.font = Fonts.footnoteSB
             
         color.translatesAutoresizingMaskIntoConstraints = false
         return color
@@ -73,7 +73,7 @@ class HabitView: UIView {
     private lazy var timeLabel: UILabel = {
         let timeLabel = UILabel()
         timeLabel.text = "ВРЕМЯ"
-        timeLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        timeLabel.font = Fonts.footnoteSB
         
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
         return timeLabel
@@ -82,7 +82,7 @@ class HabitView: UIView {
     private lazy var dailyLabel: UILabel = {
         let dailyLabel = UILabel()
         dailyLabel.text = "Каждый день в"
-        dailyLabel.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        dailyLabel.font = Fonts.body
         
         dailyLabel.translatesAutoresizingMaskIntoConstraints = false
         return  dailyLabel
@@ -90,7 +90,7 @@ class HabitView: UIView {
     
     private lazy var dailyTime: UILabel = {
         let dailyTime = UILabel()
-        dailyTime.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        dailyTime.font = Fonts.body
         dailyTime.textColor = UIColor(named: "Purple")
     
         let date = Date()
@@ -163,6 +163,8 @@ class HabitView: UIView {
         color = colorCircleView.backgroundColor
         
     }
+    
+    // MARK: Constraints
     
     private func setConstraints() {
         let safeArea = safeAreaLayoutGuide
@@ -246,13 +248,13 @@ extension HabitView: UITextFieldDelegate {
         title = nil
         
         textField.placeholder = nil
-        textField.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        textField.font = Fonts.headline
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         guard textField.text != "" else {
-            textField.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+            textField.font = Fonts.body
             textField.placeholder = "Бегать по утрам, спать 8 часов и т. п."
             return
         }
