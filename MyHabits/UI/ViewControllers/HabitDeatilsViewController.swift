@@ -125,6 +125,9 @@ extension HabitDeatilsViewController: UITableViewDataSource {
 
 extension HabitDeatilsViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+            return "АКТИВНОСТЬ"
+    }
 }
 
 
