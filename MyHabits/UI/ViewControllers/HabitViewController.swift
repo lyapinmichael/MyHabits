@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HabitViewController: UIViewController {
+final class HabitViewController: UIViewController {
     
     // MARK: - Public properties
     

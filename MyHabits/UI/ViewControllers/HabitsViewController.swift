@@ -160,4 +160,17 @@ extension HabitsViewController: UICollectionViewDelegateFlowLayout {
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if indexPath.section == 1 {
+            
+            let habit = HabitsStore.shared.habits[indexPath.row]
+            
+            let detailsViewController = HabitDeatilsViewController()
+            detailsViewController.update(with: habit)
+            
+            navigationController?.pushViewController(detailsViewController, animated: true)
+        }
+    }
+    
 }
