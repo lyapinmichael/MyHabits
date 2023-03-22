@@ -60,6 +60,7 @@
 		EC34C1CF29CA199B00994F0B /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				EC9797C829C4738C00FEEA71 /* Constants.swift */,
 				EC34C1D029CA19E700994F0B /* DateExtension.swift */,
 			);
 			path = Misc;
@@ -139,7 +140,6 @@
 			children = (
 				EC9797BC29C3932C00FEEA71 /* ViewControllers */,
 				EC9797BD29C3933F00FEEA71 /* Views */,
-				EC9797C829C4738C00FEEA71 /* Constants.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";

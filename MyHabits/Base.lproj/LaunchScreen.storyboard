@@ -18,10 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2m1-8v-Z5d">
-                                <rect key="frame" x="76" y="362" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyHabits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4D-Db-P7U">
                                 <rect key="frame" x="152.66666666666666" y="766" width="88" height="24"/>
                                 <color key="tintColor" name="Purple"/>
@@ -29,10 +25,19 @@
                                 <color key="textColor" name="Purple"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="2m1-8v-Z5d">
+                                <rect key="frame" x="121.66666666666669" y="351" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="JIl-F5-06x"/>
+                                    <constraint firstAttribute="height" constant="150" id="kOA-lN-iAS"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="2m1-8v-Z5d" firstAttribute="centerX" secondItem="B4D-Db-P7U" secondAttribute="centerX" id="0B8-Gs-IMX"/>
+                            <constraint firstItem="2m1-8v-Z5d" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="5bu-rg-9Dh"/>
                             <constraint firstItem="B4D-Db-P7U" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="6Dy-nm-VnU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="B4D-Db-P7U" secondAttribute="bottom" constant="28" id="oQW-jW-jKO"/>
                         </constraints>
@@ -44,6 +49,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="LaunchScreenLogo" width="1024" height="1024"/>
         <namedColor name="Purple">
             <color red="0.63137254901960782" green="0.086274509803921567" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
