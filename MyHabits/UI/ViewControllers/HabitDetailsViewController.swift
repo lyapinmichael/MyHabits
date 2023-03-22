@@ -122,7 +122,13 @@ extension HabitDetailsViewController: UITableViewDataSource {
         cell.accessoryView = UIImageView(image: UIImage(systemName: "checkmark"))
         cell.accessoryView?.tintColor = UIColor(named: "Purple")
 
-        if habit.trackDates.contains(where: {$0.isToday(date)} ) {
+//        if habit.trackDates.contains(where: {$0.isToday(date)} ) {
+//            cell.accessoryView?.isHidden = false
+//        } else {
+//            cell.accessoryView?.isHidden = true
+//        }
+        
+        if HabitsStore.shared.habit(habit, isTrackedIn: date) {
             cell.accessoryView?.isHidden = false
         } else {
             cell.accessoryView?.isHidden = true
