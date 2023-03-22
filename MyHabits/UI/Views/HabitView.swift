@@ -68,7 +68,7 @@ class HabitView: UIView {
         let colorPicker = UIColorPickerViewController()
         colorPicker.supportsAlpha = false
         colorPicker.delegate = self
-        colorPicker.modalPresentationStyle = .popover
+        
         return colorPicker
     }()
     
@@ -253,7 +253,7 @@ class HabitView: UIView {
     
     @objc private func deletionAlert() {
         let alert = UIAlertController(title: "Удалить привычку",
-                                      message: "Вы хотите удалить привычку \(self.title ?? "Выбранная привычка") ?",
+                                      message: "Вы хотите удалить привычку \"\(self.title ?? "Выбранная привычка")\" ?",
                                       preferredStyle: .alert)
         
         let deletionHandler: ((UIAlertAction) -> Void) = { _ in

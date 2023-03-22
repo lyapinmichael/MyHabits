@@ -56,6 +56,9 @@ final class HabitsViewController: UIViewController {
     
     private func setup() {
         title = "Сегодня"
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: self.title, style: .plain, target: nil, action: nil)
+        
         navigationItem.rightBarButtonItem = plusBarButtonItem
         view.addSubview(collectionView)
     }
@@ -75,6 +78,7 @@ final class HabitsViewController: UIViewController {
     
     func update() {
         collectionView.reloadData()
+        updateProgress()
     }
     
     func updateProgress() {

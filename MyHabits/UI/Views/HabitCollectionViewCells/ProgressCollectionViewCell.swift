@@ -64,7 +64,8 @@ final class ProgressCollectionViewCell: UICollectionViewCell {
     
         setup()
         setConstraints()
-        progressBar.progress = (HabitsStore.shared.todayProgress)
+        updateProgress(HabitsStore.shared.todayProgress)
+        
     }
     
     required init?(coder: NSCoder) {
