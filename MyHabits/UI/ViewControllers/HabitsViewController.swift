@@ -166,7 +166,8 @@ extension HabitsViewController: UICollectionViewDelegateFlowLayout {
             
             let habit = HabitsStore.shared.habits[indexPath.row]
             
-            let detailsViewController = HabitDeatilsViewController()
+            let detailsViewController = HabitDetailsViewController()
+            detailsViewController.delegate = self
             detailsViewController.update(with: habit)
             
             navigationController?.pushViewController(detailsViewController, animated: true)

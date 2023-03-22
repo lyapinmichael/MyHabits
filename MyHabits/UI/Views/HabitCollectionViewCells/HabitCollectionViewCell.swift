@@ -17,17 +17,6 @@ final class HabitCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Private Properties
     
-    private var state: Bool? {
-        willSet {
-            switch newValue {
-            case true:
-                circle.image = UIImage(systemName: "checkmark.circle.fill")
-            default:
-                circle.image = UIImage(systemName: "circle")
-            }
-        }
-    }
-    
     private lazy var habitCellView: UIView = {
         let view = UIView(frame: contentView.frame)
         view.backgroundColor = .white
@@ -139,7 +128,14 @@ final class HabitCollectionViewCell: UICollectionViewCell {
     }
     
     func update(with habit: Habit) {
-        state = habit.isAlreadyTakenToday
+        
+        switch habit.isAlreadyTakenToday {
+            case true:
+                circle.image = UIImage(systemName: "checkmark.circle.fill")
+            default:
+                circle.image = UIImage(systemName: "circle")
+        }
+        
         countLabel.text = "Счетчик: " + "\(habit.trackDates.count)"
         delegate?.updateProgress()
     }
@@ -151,10 +147,12 @@ final class HabitCollectionViewCell: UICollectionViewCell {
         guard let superView = superview as? UICollectionView else { return }
         
         let index = superView.indexPath(for: self)!.row
-        let habit = HabitsStore.shared.habits[index]
+        let habitsStore = HabitsStore.shared
+        let habit = habitsStore.habits[index]
         
-        guard state == false else {
+        guard habit.isAlreadyTakenToday == false else {
             habit.trackDates.removeLast()
+            habitsStore.save()
             update(with: habit)
             return }
         

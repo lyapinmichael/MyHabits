@@ -11,8 +11,9 @@ final class HabitViewController: UIViewController {
     
     // MARK: - Public properties
     
-    var delegate: HabitsViewController?
+    var delegate: UIViewController?
     
+    var habit: Habit? 
     // MARK: - Private properties
     
     private lazy var habitView: HabitView = {
@@ -81,6 +82,29 @@ final class HabitViewController: UIViewController {
         ])
     }
     
+    private func emptyTitleAlert() {
+        let alertTitle = "Ой!"
+        let alertMessage = "Пожалуйста, напишите, какую привычку вы хотите выработать."
+        
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        
+        let handler: ((UIAlertAction) -> Void) = {_ in
+        }
+        let action = UIAlertAction(title: "Закрыть", style: .default, handler: handler)
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true)
+    }
+    
+    // MARK: - Public methods
+    
+    func modify(_ habit: Habit) {
+        
+        habitView.setup(habit)
+    
+    }
+    
     // MARK: - Objc actions
     
     @objc private func close() {
@@ -92,29 +116,34 @@ final class HabitViewController: UIViewController {
         habitView.endEditing(true)
         
         guard habitView.title != nil else {
-            
-            let alertTitle = "Ой!"
-            let alertMessage = "Пожалуйста, напишите, какую привычку вы хотите выработать."
-            
-            let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
-            
-            let handler: ((UIAlertAction) -> Void) = {_ in
-            }
-            let action = UIAlertAction(title: "Закрыть", style: .default, handler: handler)
-            
-            alert.addAction(action)
-            
-            present(alert, animated: true)
+            emptyTitleAlert()
             return
         }
         
-        let habit = Habit(name: habitView.title!,
-                          date: habitView.date!,
-                          color: habitView.color!)
-        let habitsStore = HabitsStore.shared
-        habitsStore.habits.append(habit)
-        
-        delegate?.update()
+        if let delegate = delegate as? HabitsViewController {
+            
+            let habit = Habit(name: habitView.title!,
+                              date: habitView.date!,
+                              color: habitView.color!)
+            let habitsStore = HabitsStore.shared
+            habitsStore.habits.append(habit)
+            delegate.update()
+            
+        } else if let delegate = delegate as? HabitDetailsViewController {
+            guard let habit = delegate.habit else {fatalError("No habit")}
+            
+            
+            var habitsStore = HabitsStore.shared.habits
+            guard let index = habitsStore.firstIndex(where: {$0 == habit}) else {fatalError("Habit not found in HabitsStore")}
+            
+            habit.name = habitView.title!
+            habit.date = habitView.date!
+            habit.color = habitView.color!
+            delegate.update(with: habit)
+            delegate.delegate?.update() //вот это место мне не нравится
+            
+            habitsStore[index] = habit
+        }
         
         dismiss(animated: true)
     }

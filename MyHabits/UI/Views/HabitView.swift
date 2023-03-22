@@ -8,7 +8,7 @@
 import UIKit
 
 class HabitView: UIView {
-
+    
     // MARK: - Public properties
     
     var title: String?
@@ -18,7 +18,9 @@ class HabitView: UIView {
     weak var delegate: UIViewController?
     
     // MARK: - Private properties
-
+    
+    private var habit: Habit?
+    
     private lazy var titleLabel: UILabel = {
         let title = UILabel()
         title.text = "НАЗВАНИЕ"
@@ -43,7 +45,7 @@ class HabitView: UIView {
         let color = UILabel()
         color.text = "ЦВЕТ"
         color.font = Fonts.footnoteSB
-            
+        
         color.translatesAutoresizingMaskIntoConstraints = false
         return color
     }()
@@ -92,7 +94,7 @@ class HabitView: UIView {
         let dailyTime = UILabel()
         dailyTime.font = Fonts.body
         dailyTime.textColor = UIColor(named: "Purple")
-    
+        
         let date = Date()
         let formatter = DateFormatter()
         formatter.timeStyle = .short
@@ -112,14 +114,17 @@ class HabitView: UIView {
         return timePicker
     }()
     
-//    private lazy var stackView: UIStackView = {
-//        let stackView = UIStackView()
-//        stackView.axis = .vertical
-//        stackView.spacing = 16
-//        
-//        stackView.translatesAutoresizingMaskIntoConstraints = false
-//        return stackView
-//    }()
+    private lazy var deleteButton: UIButton = {
+        let delete = UIButton()
+        delete.setTitle("Удалить привычку", for: .normal)
+        delete.setTitleColor(.red, for: .normal)
+        delete.setTitleColor(.systemGray4, for: .highlighted)
+        delete.isHidden = true
+        delete.addTarget(self, action: #selector(deletionAlert), for: .touchUpInside)
+        
+        delete.translatesAutoresizingMaskIntoConstraints = false
+        return delete
+    }()
     
     // MARK: - Override init
     
@@ -128,7 +133,7 @@ class HabitView: UIView {
         
         setup()
         setConstraints()
-    
+        
     }
     
     required init?(coder: NSCoder) {
@@ -138,14 +143,6 @@ class HabitView: UIView {
     // MARK: - Private methods
     
     private func setup() {
-//        addSubview(stackView)
-//        stackView.addArrangedSubview(titleLabel)
-//        stackView.addArrangedSubview(titleField)
-//        stackView.addArrangedSubview(colorLabel)
-//        stackView.addArrangedSubview(colorCircleView)
-//        stackView.addArrangedSubview(timeLabel)
-//        stackView.addArrangedSubview(dailyLabel)
-//        stackView.addArrangedSubview(timePicker)
         
         addSubview(titleLabel)
         addSubview(titleField)
@@ -155,6 +152,7 @@ class HabitView: UIView {
         addSubview(dailyLabel)
         addSubview(dailyTime)
         addSubview(timePicker)
+        addSubview(deleteButton)
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         addGestureRecognizer(tapRecognizer)
@@ -198,9 +196,33 @@ class HabitView: UIView {
             
             timePicker.topAnchor.constraint(equalTo: dailyLabel.bottomAnchor, constant: 20),
             timePicker.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            timePicker.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor)
+            timePicker.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            
+            deleteButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
+            deleteButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -20)
             
         ])
+    }
+    
+    // MARK: - Public methods
+    
+    func setup(_ habit: Habit, isDeleteButtonHidden: Bool = false) {
+        
+        self.habit = habit
+        
+        self.title = habit.name
+        self.titleField.text = habit.name
+        
+        self.date = habit.date
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        self.dailyTime.text = formatter.string(from: habit.date)
+        
+        self.color = habit.color
+        self.colorCircleView.backgroundColor = habit.color
+        
+        deleteButton.isHidden = isDeleteButtonHidden
+        
     }
     
     // MARK: - Objc actions
@@ -229,11 +251,51 @@ class HabitView: UIView {
         endEditing(true)
     }
     
-    @objc private func save() {
+    @objc private func deletionAlert() {
+        let alert = UIAlertController(title: "Удалить привычку",
+                                      message: "Вы хотите удалить привычку \(self.title ?? "Выбранная привычка") ?",
+                                      preferredStyle: .alert)
+        
+        let deletionHandler: ((UIAlertAction) -> Void) = { _ in
+            self.deleteHabit()
+        }
+            
+        
+        let deleteAction = UIAlertAction(title: "Удалить", style: .destructive, handler: deletionHandler)
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        
+        alert.addAction(cancelAction)
+        alert.addAction(deleteAction)
+        
+        delegate?.present(alert, animated: true)
+        
         
     }
     
+    @objc private func deleteHabit() {
+        
+        guard let habit = self.habit else { fatalError("Invalid habit")}
+        
+        guard let delegate = self.delegate as? HabitViewController else { fatalError("Wrong delegate type. Function unavaliable")}
+        
+        let habitsStore = HabitsStore.shared
+        guard let index = habitsStore.habits.firstIndex(where: {$0 ==  habit}) else { fatalError("Invalid index") }
+        
+                habitsStore.habits.remove(at: index)
+                habitsStore.save()
+        
+        guard let detailsController = delegate.delegate as? HabitDetailsViewController else { fatalError("Wrong delegate type")}
+        
+        guard detailsController.delegate != nil else {fatalError("Wrong delegate type")}
+        
+        detailsController.delegate!.update()
+        
+        
+        delegate.dismiss(animated: true)
+        detailsController.navigationController?.popViewController(animated: false)
+    }
 }
+
 
 // MARK: - TextField delegate extension
 
@@ -263,6 +325,8 @@ extension HabitView: UITextFieldDelegate {
     }
     
 }
+
+// MARK: - ColorPicker delegate extension
 
 extension HabitView: UIColorPickerViewControllerDelegate {
     

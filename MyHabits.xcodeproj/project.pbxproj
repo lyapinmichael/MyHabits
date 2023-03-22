@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EC34C1CE29C9AE3300994F0B /* HabitDeatilsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC34C1CD29C9AE3300994F0B /* HabitDeatilsViewController.swift */; };
+		EC34C1CE29C9AE3300994F0B /* HabitDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC34C1CD29C9AE3300994F0B /* HabitDetailsViewController.swift */; };
+		EC34C1D129CA19E700994F0B /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC34C1D029CA19E700994F0B /* DateExtension.swift */; };
 		EC9797A829C391A600FEEA71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9797A729C391A600FEEA71 /* AppDelegate.swift */; };
 		EC9797AA29C391A600FEEA71 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9797A929C391A600FEEA71 /* SceneDelegate.swift */; };
 		EC9797B129C391A800FEEA71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC9797B029C391A800FEEA71 /* Assets.xcassets */; };
@@ -25,7 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EC34C1CD29C9AE3300994F0B /* HabitDeatilsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDeatilsViewController.swift; sourceTree = "<group>"; };
+		EC34C1CD29C9AE3300994F0B /* HabitDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsViewController.swift; sourceTree = "<group>"; };
+		EC34C1D029CA19E700994F0B /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		EC9797A429C391A600FEEA71 /* MyHabits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHabits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC9797A729C391A600FEEA71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC9797A929C391A600FEEA71 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC34C1CF29CA199B00994F0B /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				EC34C1D029CA19E700994F0B /* DateExtension.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
 		EC97979B29C391A600FEEA71 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +87,7 @@
 				EC9797BB29C3931A00FEEA71 /* Application */,
 				EC9797BF29C3936600FEEA71 /* UI */,
 				EC9797BE29C3935D00FEEA71 /* Model */,
+				EC34C1CF29CA199B00994F0B /* Misc */,
 				EC9797B029C391A800FEEA71 /* Assets.xcassets */,
 				EC9797B229C391A800FEEA71 /* LaunchScreen.storyboard */,
 				EC9797B529C391A800FEEA71 /* Info.plist */,
@@ -100,7 +111,7 @@
 				EC9797C429C467CD00FEEA71 /* HabitsViewController.swift */,
 				EC9797C629C4681F00FEEA71 /* InfoViewController.swift */,
 				EC9797CC29C4B7E300FEEA71 /* HabitViewController.swift */,
-				EC34C1CD29C9AE3300994F0B /* HabitDeatilsViewController.swift */,
+				EC34C1CD29C9AE3300994F0B /* HabitDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -213,11 +224,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC9797C129C45BBE00FEEA71 /* HabitsStore.swift in Sources */,
+				EC34C1D129CA19E700994F0B /* DateExtension.swift in Sources */,
 				EC9797CB29C476E500FEEA71 /* Info.swift in Sources */,
 				ECA7CF6C29C7A3EE00730EF8 /* ProgressCollectionViewCell.swift in Sources */,
 				EC9797A829C391A600FEEA71 /* AppDelegate.swift in Sources */,
 				EC9797C529C467CD00FEEA71 /* HabitsViewController.swift in Sources */,
-				EC34C1CE29C9AE3300994F0B /* HabitDeatilsViewController.swift in Sources */,
+				EC34C1CE29C9AE3300994F0B /* HabitDetailsViewController.swift in Sources */,
 				ECA7CF6A29C7A3D900730EF8 /* HabitCollectionViewCell.swift in Sources */,
 				EC9797C329C45C0A00FEEA71 /* MainTabBarController.swift in Sources */,
 				EC9797C929C4738C00FEEA71 /* Constants.swift in Sources */,

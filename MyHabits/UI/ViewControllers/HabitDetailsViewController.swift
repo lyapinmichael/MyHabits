@@ -7,11 +7,14 @@
 
 import UIKit
 
-final class HabitDeatilsViewController: UIViewController {
+final class HabitDetailsViewController: UIViewController {
 
-    // MARK: - Private properties
+    // MARK: - Public properties
+    var delegate: HabitsViewController?
     
-    private var habit: Habit?
+    var habit: Habit?
+    
+    // MARK: - Private properties
     
     private enum CellID: String {
         case baseCell = "baseCell"
@@ -34,6 +37,8 @@ final class HabitDeatilsViewController: UIViewController {
     private lazy var modifyBarButton: UIBarButtonItem = {
        let modify = UIBarButtonItem()
         modify.title = "Править"
+        modify.target = self
+        modify.action = #selector(presentHabitView)
         
         return modify
     }()
@@ -54,7 +59,6 @@ final class HabitDeatilsViewController: UIViewController {
         navigationItem.rightBarButtonItem = modifyBarButton
         view.addSubview(detailsTableView)
 
-
     }
     
     // MARK: - Public Methods
@@ -63,12 +67,33 @@ final class HabitDeatilsViewController: UIViewController {
         navigationItem.title = habit.name
         self.habit = habit
     }
+    
+    // MARK: - Objc actions
+    
+    @objc private func presentHabitView() {
+        let habitViewController = HabitViewController()
+        habitViewController.delegate = self
+        
+        guard habit != nil else {fatalError("No habit")}
+        
+        habitViewController.modify(habit!)
+        
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.backgroundColor = UIColor(named: "PickedNavBarWhite")
+        
+        let habitNavigationController = UINavigationController(rootViewController: habitViewController)
+        habitNavigationController.navigationBar.standardAppearance = navBarAppearance
+        habitNavigationController.navigationBar.scrollEdgeAppearance = navBarAppearance
+        habitNavigationController.modalPresentationStyle = .overFullScreen
+        present(habitNavigationController, animated: true)
+    }
 
 }
 
 // MARK: - TableView data source extension
 
-extension HabitDeatilsViewController: UITableViewDataSource {
+extension HabitDetailsViewController: UITableViewDataSource {
     
     private func setupCell (_ cell: UITableViewCell, at indexPath: IndexPath) -> UITableViewCell {
         
@@ -123,38 +148,9 @@ extension HabitDeatilsViewController: UITableViewDataSource {
 
 //MARK: - TableView delegate extension
 
-extension HabitDeatilsViewController: UITableViewDelegate {
+extension HabitDetailsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
             return "АКТИВНОСТЬ"
-    }
-}
-
-
-extension Date {
-    func isToday (_ date: Date) -> Bool {
-        
-        let calendar = Calendar.current
-        
-        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
-        let selfComponents = calendar.dateComponents([.year, .month, .day], from: self)
-        
-        return dateComponents == selfComponents
-    }
-    
-    func isYesterday (_ date: Date) -> Bool {
-        
-        let calendar = Calendar.current
-        
-        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
-        let selfComponents = calendar.dateComponents([.year, .month, .day], from: self)
-        
-        
-        if dateComponents.year == selfComponents.year,
-           dateComponents.month == selfComponents.month,
-           dateComponents.day == selfComponents.day! - 1 {
-            return true
-        } else {return false}
-           
     }
 }
