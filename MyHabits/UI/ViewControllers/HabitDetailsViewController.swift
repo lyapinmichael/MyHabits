@@ -61,13 +61,6 @@ final class HabitDetailsViewController: UIViewController {
 
     }
     
-    // MARK: - Public Methods
-    
-    func update(with habit: Habit) {
-        navigationItem.title = habit.name
-        self.habit = habit
-    }
-    
     // MARK: - Objc actions
     
     @objc private func presentHabitView() {
@@ -159,4 +152,13 @@ extension HabitDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
             return "АКТИВНОСТЬ"
     }
+}
+
+extension HabitDetailsViewController: HabitsViewControllerDelegate {
+   
+    func update(with habit: Habit) {
+        navigationItem.title = habit.name
+        self.habit = habit
+    }
+    
 }

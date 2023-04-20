@@ -11,7 +11,7 @@ final class HabitViewController: UIViewController {
     
     // MARK: - Public properties
     
-    var delegate: UIViewController?
+    var delegate: HabitsViewControllerDelegate?
     
     var habit: Habit? 
     // MARK: - Private properties

@@ -76,11 +76,6 @@ final class HabitsViewController: UIViewController {
     
     // MARK: - Public methods
     
-    func update() {
-        collectionView.reloadData()
-        updateProgress()
-    }
-    
     func updateProgress() {
         guard let progressCell = collectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as? ProgressCollectionViewCell else { return }
         
@@ -176,6 +171,15 @@ extension HabitsViewController: UICollectionViewDelegateFlowLayout {
             
             navigationController?.pushViewController(detailsViewController, animated: true)
         }
+    }
+    
+}
+
+extension HabitsViewController: HabitsViewControllerDelegate {
+   
+    func update() {
+        collectionView.reloadData()
+        updateProgress()
     }
     
 }

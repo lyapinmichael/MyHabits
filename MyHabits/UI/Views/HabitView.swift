@@ -15,6 +15,7 @@ class HabitView: UIView {
     var color: UIColor?
     var date: Date?
     
+    /// Делегат должен быть прописан через протокол
     weak var delegate: UIViewController?
     
     // MARK: - Private properties
