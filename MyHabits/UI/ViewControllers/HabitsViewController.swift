@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 final class HabitsViewController: UIViewController {
 
@@ -48,8 +49,16 @@ final class HabitsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(update),
+                                               name: HabitNotifications.updateHabitsVC,
+                                               object: nil)
         setup()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
     }
     
     // MARK: - Private methods
@@ -76,11 +85,6 @@ final class HabitsViewController: UIViewController {
     
     // MARK: - Public methods
     
-    func update() {
-        collectionView.reloadData()
-        updateProgress()
-    }
-    
     func updateProgress() {
         guard let progressCell = collectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as? ProgressCollectionViewCell else { return }
         
@@ -89,10 +93,14 @@ final class HabitsViewController: UIViewController {
     
     // MARK: - @Objc actions
     
+    @objc func update() {
+        collectionView.reloadData()
+        updateProgress()
+    }
+    
     @objc private func presentHabitView() {
         
         let habitViewController = HabitViewController()
-        habitViewController.delegate = self
         
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
@@ -103,6 +111,8 @@ final class HabitsViewController: UIViewController {
         habitNavigationController.navigationBar.scrollEdgeAppearance = navBarAppearance
         habitNavigationController.modalPresentationStyle = .overFullScreen
         present(habitNavigationController, animated: true)
+        NotificationCenter.default.post(name: HabitNotifications.saveNewHabit,
+                                        object: nil)
     }
 
 }

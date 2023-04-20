@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC22BF4229F14BB20024E0B4 /* HabitNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC22BF4129F14BB20024E0B4 /* HabitNotifications.swift */; };
 		EC34C1CE29C9AE3300994F0B /* HabitDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC34C1CD29C9AE3300994F0B /* HabitDetailsViewController.swift */; };
 		EC34C1D129CA19E700994F0B /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC34C1D029CA19E700994F0B /* DateExtension.swift */; };
 		EC9797A829C391A600FEEA71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9797A729C391A600FEEA71 /* AppDelegate.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC22BF4129F14BB20024E0B4 /* HabitNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitNotifications.swift; sourceTree = "<group>"; };
 		EC34C1CD29C9AE3300994F0B /* HabitDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsViewController.swift; sourceTree = "<group>"; };
 		EC34C1D029CA19E700994F0B /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		EC9797A429C391A600FEEA71 /* MyHabits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHabits.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +64,7 @@
 			children = (
 				EC9797C829C4738C00FEEA71 /* Constants.swift */,
 				EC34C1D029CA19E700994F0B /* DateExtension.swift */,
+				EC22BF4129F14BB20024E0B4 /* HabitNotifications.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			files = (
 				EC9797C129C45BBE00FEEA71 /* HabitsStore.swift in Sources */,
 				EC34C1D129CA19E700994F0B /* DateExtension.swift in Sources */,
+				EC22BF4229F14BB20024E0B4 /* HabitNotifications.swift in Sources */,
 				EC9797CB29C476E500FEEA71 /* Info.swift in Sources */,
 				ECA7CF6C29C7A3EE00730EF8 /* ProgressCollectionViewCell.swift in Sources */,
 				EC9797A829C391A600FEEA71 /* AppDelegate.swift in Sources */,

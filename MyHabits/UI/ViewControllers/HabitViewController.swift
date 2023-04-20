@@ -54,6 +54,10 @@ final class HabitViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(setSaveButtonAction(_:)),
+                                               name: HabitNotifications.saveNewHabit,
+                                               object: nil)
         setup()
         
     }
@@ -111,6 +115,28 @@ final class HabitViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    @objc private func setSaveButtonAction(_ notification: NSNotification) {
+        if notification.name == HabitNotifications.saveNewHabit {
+            self.saveBarButton.action = #selector(saveNew)
+        }
+    }
+    
+    @objc private func saveNew() {
+        habitView.endEditing(true)
+        
+        guard habitView.title != nil else {
+            emptyTitleAlert()
+            return
+        }
+        
+        let habit = Habit(name: habitView.title!,
+                          date: habitView.date!,
+                          color: habitView.color!)
+        let habitsStore = HabitsStore.shared
+        habitsStore.habits.append(habit)
+        NotificationCenter.default.post(name: HabitNotifications.updateHabitsVC, object: nil)
+        
+    }
     @objc private func save() {
         
         habitView.endEditing(true)
@@ -127,7 +153,7 @@ final class HabitViewController: UIViewController {
                               color: habitView.color!)
             let habitsStore = HabitsStore.shared
             habitsStore.habits.append(habit)
-            delegate.update()
+            NotificationCenter.default.post(name: HabitNotifications.updateHabitsVC, object: nil)
             
         } else if let delegate = delegate as? HabitDetailsViewController {
             guard let habit = delegate.habit else {fatalError("No habit")}
